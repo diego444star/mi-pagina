@@ -14,245 +14,160 @@ body {
     align-items: center;
     justify-content: center;
     padding: 25px 15px;
-
     font-family: Arial, sans-serif;
     color: white;
     text-align: center;
-
     position: relative;
     overflow-x: hidden;
-
     background: #111;
 }
 
-/* Fondo desenfocado */
 body::before {
     content: "";
     position: fixed;
-    inset: -30px;
-
+    inset: 0;
     background-image: url("fondo.jpg");
     background-size: cover;
     background-position: center;
-
-    filter: blur(18px);
-    transform: scale(1.08);
-
+    filter: blur(4px);
+    transform: scale(1.04);
     z-index: -2;
 }
 
-/* Capa oscura */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
-
-    background: rgba(0, 0, 0, 0.38);
-
+    background: rgba(0, 0, 0, 0.12);
     z-index: -1;
 }
 
-/* Tarjeta principal */
 .profile-card {
     width: min(100%, 430px);
-    padding: 30px 22px 20px;
-
-    border-radius: 28px;
-
-    background: rgba(255, 255, 255, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.20);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    padding: 25px 12px 15px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
-/* Encabezado */
 .profile-header {
     margin-bottom: 28px;
 }
 
 h1 {
+    position: relative;
+    display: inline-block;
     font-size: 42px;
     letter-spacing: 6px;
     font-weight: 800;
+    color: #c084ff;
+    text-shadow: 0 0 12px rgba(192,132,255,.55), 0 0 30px rgba(168,85,247,.30);
+}
 
-    margin-bottom: 10px;
+h1::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 190px;
+    height: 65px;
+    transform: translate(-50%,-50%);
+    background: rgba(168,85,247,.18);
+    border-radius: 50%;
+    filter: blur(16px);
+    z-index: -1;
 }
 
 .subtitle {
     display: inline-block;
-
-    padding: 8px 16px;
-
+    margin-top: 10px;
+    padding: 7px 15px;
     border-radius: 20px;
-
-    background: rgba(255, 255, 255, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 14px;
+    color: rgba(255,255,255,.85);
 }
 
-/* Lista de redes */
 .socials {
     display: flex;
     flex-direction: column;
     gap: 13px;
 }
 
-/* Botones */
 .social-link {
     width: 100%;
-    min-height: 68px;
-
+    min-height: 66px;
     display: flex;
     align-items: center;
-
-    padding: 8px 18px 8px 9px;
-
-    border-radius: 22px;
-
+    padding: 7px 16px 7px 8px;
+    border-radius: 20px;
     color: white;
     text-decoration: none;
-
-    background: rgba(255, 255, 255, 0.09);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.13);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    transition: transform .2s ease, background .2s ease;
 }
 
 .social-link:hover {
     transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255,255,255,.11);
 }
 
 .social-link:active {
-    transform: scale(0.98);
+    transform: scale(.98);
 }
 
-/* Círculo del logo */
 .logo-circle {
-    width: 52px;
-    height: 52px;
-
+    width: 51px;
+    height: 51px;
     flex-shrink: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
-    border: 1px solid rgba(255, 255, 255, 0.25);
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    box-shadow:
-        inset 0 1px 1px rgba(255, 255, 255, 0.18),
-        0 6px 15px rgba(0, 0, 0, 0.20);
+    border: 1px solid rgba(255,255,255,.20);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.15), 0 5px 12px rgba(0,0,0,.18);
 }
 
-/* Logos reales */
 .logo-circle img {
     width: 27px;
     height: 27px;
-
     object-fit: contain;
 }
 
-/* Color de cada aplicación */
-.tiktok .logo-circle {
-    background: rgba(0, 242, 234, 0.28);
-}
+.tiktok .logo-circle { background: rgba(0,242,234,.28); }
+.roblox .logo-circle { background: rgba(226,35,26,.30); }
+.facebook .logo-circle { background: rgba(24,119,242,.30); }
+.whatsapp .logo-circle { background: rgba(37,211,102,.28); }
+.discord .logo-circle { background: rgba(88,101,242,.30); }
+.ngl .logo-circle { background: rgba(180,70,180,.28); }
 
-.roblox .logo-circle {
-    background: rgba(226, 35, 26, 0.30);
-}
-
-.facebook .logo-circle {
-    background: rgba(24, 119, 242, 0.30);
-}
-
-.whatsapp .logo-circle {
-    background: rgba(37, 211, 102, 0.28);
-}
-
-.discord .logo-circle {
-    background: rgba(88, 101, 242, 0.30);
-}
-
-.ngl .logo-circle {
-    background: rgba(180, 70, 180, 0.28);
-}
-
-/* Nombre */
 .social-name {
     margin-left: 17px;
-
     font-size: 18px;
     font-weight: 600;
-
-    letter-spacing: 0.3px;
+    letter-spacing: .3px;
 }
 
-/* Copyright */
 .copyright {
-    margin-top: 25px;
-    padding: 12px 10px;
-
-    border-radius: 18px;
-
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    color: rgba(255, 255, 255, 0.65);
+    margin-top: 22px;
+    padding: 10px;
+    color: rgba(255,255,255,.65);
     font-size: 12px;
 }
 
-/* Celular */
 @media (max-width: 480px) {
-
-    body {
-        padding: 18px 12px;
-    }
-
-    .profile-card {
-        padding: 25px 16px 17px;
-        border-radius: 24px;
-    }
-
-    h1 {
-        font-size: 36px;
-        letter-spacing: 5px;
-    }
-
-    .social-link {
-        min-height: 64px;
-        border-radius: 20px;
-    }
-
-    .logo-circle {
-        width: 50px;
-        height: 50px;
-    }
-
-    .social-name {
-        font-size: 17px;
-    }
+    body { padding: 18px 10px; }
+    .profile-card { padding: 20px 8px 12px; }
+    h1 { font-size: 36px; letter-spacing: 5px; }
+    .social-link { min-height: 63px; border-radius: 19px; }
+    .logo-circle { width: 49px; height: 49px; }
+    .social-name { font-size: 17px; }
 }
