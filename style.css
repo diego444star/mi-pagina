@@ -4,157 +4,255 @@
     padding: 0;
 }
 
+html {
+    min-height: 100%;
+}
+
 body {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 32px 20px;
+    padding: 25px 15px;
 
     font-family: Arial, sans-serif;
     color: white;
     text-align: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(5, 5, 15, 0.82),
-            rgba(20, 8, 35, 0.68)
-        ),
-        url("fondo.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
+    position: relative;
     overflow-x: hidden;
+
+    background: #111;
 }
 
+/* Fondo desenfocado */
 body::before {
     content: "";
     position: fixed;
+    inset: -30px;
+
+    background-image: url("fondo.jpg");
+    background-size: cover;
+    background-position: center;
+
+    filter: blur(18px);
+    transform: scale(1.08);
+
+    z-index: -2;
+}
+
+/* Capa oscura */
+body::after {
+    content: "";
+    position: fixed;
     inset: 0;
-    pointer-events: none;
 
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(140, 80, 255, 0.18),
-            transparent 45%
-        );
+    background: rgba(0, 0, 0, 0.38);
 
-    z-index: 0;
+    z-index: -1;
+}
+
+/* Tarjeta principal */
+.profile-card {
+    width: min(100%, 430px);
+    padding: 30px 22px 20px;
+
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Encabezado */
+.profile-header {
+    margin-bottom: 28px;
 }
 
 h1 {
-    position: relative;
-    z-index: 1;
+    font-size: 42px;
+    letter-spacing: 6px;
+    font-weight: 800;
 
-    font-size: clamp(42px, 11vw, 72px);
-    letter-spacing: 0.18em;
     margin-bottom: 10px;
-
-    text-shadow:
-        0 0 12px rgba(255, 255, 255, 0.55),
-        0 0 35px rgba(140, 80, 255, 0.45);
-
-    animation: glow 2.8s ease-in-out infinite alternate;
 }
 
-p {
-    position: relative;
-    z-index: 1;
+.subtitle {
+    display: inline-block;
 
-    font-size: 17px;
-    margin-bottom: 28px;
-    color: rgba(255, 255, 255, 0.8);
-}
+    padding: 8px 16px;
 
-a {
-    position: relative;
-    z-index: 1;
-
-    display: block;
-    width: min(100%, 330px);
-
-    padding: 16px 20px;
-    margin: 10px;
-
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 18px;
+    border-radius: 20px;
 
     background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Lista de redes */
+.socials {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+/* Botones */
+.social-link {
+    width: 100%;
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 8px 18px 8px 9px;
+
+    border-radius: 22px;
 
     color: white;
     text-decoration: none;
 
-    font-size: 18px;
-    font-weight: 600;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.16);
 
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.25),
-        inset 0 1px rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.social-link:active {
+    transform: scale(0.98);
+}
+
+/* Círculo del logo */
+.logo-circle {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-}
-
-a:hover {
-    transform: translateY(-4px) scale(1.02);
-
-    background: rgba(255, 255, 255, 0.18);
-
-    border-color: rgba(255, 255, 255, 0.38);
-
     box-shadow:
-        0 14px 35px rgba(0, 0, 0, 0.35),
-        0 0 22px rgba(140, 80, 255, 0.18);
+        inset 0 1px 1px rgba(255, 255, 255, 0.18),
+        0 6px 15px rgba(0, 0, 0, 0.20);
 }
 
-a:active {
-    transform: scale(0.98);
+/* Logos reales */
+.logo-circle img {
+    width: 27px;
+    height: 27px;
+
+    object-fit: contain;
 }
 
-@keyframes glow {
-    from {
-        text-shadow:
-            0 0 10px rgba(255, 255, 255, 0.45),
-            0 0 25px rgba(140, 80, 255, 0.25);
-    }
-
-    to {
-        text-shadow:
-            0 0 16px rgba(255, 255, 255, 0.75),
-            0 0 40px rgba(140, 80, 255, 0.55);
-    }
+/* Color de cada aplicación */
+.tiktok .logo-circle {
+    background: rgba(0, 242, 234, 0.28);
 }
 
+.roblox .logo-circle {
+    background: rgba(226, 35, 26, 0.30);
+}
+
+.facebook .logo-circle {
+    background: rgba(24, 119, 242, 0.30);
+}
+
+.whatsapp .logo-circle {
+    background: rgba(37, 211, 102, 0.28);
+}
+
+.discord .logo-circle {
+    background: rgba(88, 101, 242, 0.30);
+}
+
+.ngl .logo-circle {
+    background: rgba(180, 70, 180, 0.28);
+}
+
+/* Nombre */
+.social-name {
+    margin-left: 17px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+}
+
+/* Copyright */
+.copyright {
+    margin-top: 25px;
+    padding: 12px 10px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 12px;
+}
+
+/* Celular */
 @media (max-width: 480px) {
+
     body {
-        padding: 28px 14px;
+        padding: 18px 12px;
+    }
+
+    .profile-card {
+        padding: 25px 16px 17px;
+        border-radius: 24px;
     }
 
     h1 {
-        font-size: 44px;
-        letter-spacing: 0.12em;
+        font-size: 36px;
+        letter-spacing: 5px;
     }
 
-    p {
-        font-size: 16px;
-        margin-bottom: 22px;
+    .social-link {
+        min-height: 64px;
+        border-radius: 20px;
     }
 
-    a {
-        width: min(100%, 320px);
-        padding: 15px 18px;
+    .logo-circle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-name {
         font-size: 17px;
-        margin: 8px;
     }
 }
